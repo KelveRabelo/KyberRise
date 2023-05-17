@@ -1,0 +1,141 @@
+/* #301c30 */
+
+@mixin btn
+    background-color: #301c30
+    color: #fff
+    padding: 10px 20px
+    border: none
+    cursor: pointer
+    border-radius: .5rem
+
+@mixin outline
+    background: transparent
+    border: 2px solid #301c30
+
+@mixin btn-gradual
+    @include btn
+    position: relative
+    overflow: hidden
+    ::after
+        content: ''
+        background-color: #cecece
+        position: absolute
+        top: 0
+        left: -100%
+        width: 100%
+        height: 100%
+        transition: left 0.3s
+    &:hover
+        ::after
+            left: 0
+@mixin btn-gradual-outline
+    @include btn-gradual
+    @include outline
+
+
+@mixin btn-scale-effect
+    @include btn
+    transition: transform 0.3s
+    &:hover
+        transform: scale(1.1)
+@mixin btn-scale-effect-outline
+    @include btn-scale-effect
+    @include outline
+
+
+@mixin btn-fading-effect
+    @include btn
+    transition: opacity 0.3s
+    &:hover
+        opacity: 0.7
+@mixin btn-fading-effect-outline
+    @include btn-fading-effect
+    @include outline
+
+
+@mixin btn-growing-edge-effect
+    @include btn
+    position: relative
+    overflow: hidden
+    ::before
+        content: ''
+        background-color: #fff
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        width: 0
+        height: 0
+        opacity: 0
+        transition: all 0.3s
+    &:hover
+        ::before
+            width: 100%
+            height: 100%
+            opacity: 1
+@mixin btn-growing-edge-effect-outline
+    @include btn-growing-edge-effect
+    @include outline
+    
+
+@mixin btn-pulse-effect
+    @include btn
+    animation: pulsate 1s infinite
+
+    @keyframes pulsate
+        0%
+            transform: scale(1)
+
+        50%
+            transform: scale(1.1)
+
+        100%
+            transform: scale(1)
+@mixin btn-pulse-effect-outline
+    @include btn-pulse-effect
+    @include outline
+
+
+@mixin btn-balance-effect
+    @include btn
+    transition: transform 0.3s
+    transform-origin: center bottom
+    &:hover
+        transform: rotate(-5deg) scale(1.1)
+@mixin btn-balance-effect-outline
+    @include btn-balance-effect
+    @include outline
+
+
+@mixin btn-color-transition-effect
+    @include btn
+    transition: background-color 0.3s
+    &:hover
+        background-color: #cecece
+        color: #301c30
+@mixin btn-color-transition-effect-outline
+    @include btn-color-transition-effect
+    @include outline
+
+
+@mixin btn-highlight-shadow-effect
+    @include btn
+    transition: box-shadow 0.3s
+    box-shadow: 0 0 0 transparent
+    &:hover
+        box-shadow: 0 0 10px #cecece
+@mixin btn-highlight-shadow-effect-outline
+    @include btn-highlight-shadow-effect
+    @include outline
+
+
+@mixin btn-highlighted-edge-zoom-effect
+    @include btn
+    transition: transform 0.3s, box-shadow 0.3s
+
+    &:hover
+        transform: scale(1.1)
+        box-shadow: 0 0 10px #cecece
+@mixin btn-highlighted-edge-zoom-effect-outline
+    @include btn-highlighted-edge-zoom-effect
+    @include outline
